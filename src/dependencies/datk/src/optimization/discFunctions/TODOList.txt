@@ -1,0 +1,17 @@
+// TODO items:
+1) Implement k-Facility Location (Weighted k-uniform matroid rank function) -- Kai
+2) Implement sparse graph facility location -- Rishabh
+3) Implement Clustered Submodular function (part of it is currently there, but implement the full one) -- Rishabh 
+4) Implement Core Set functions (Pairwise Sum distance, pairwise min distance, min spanning tree distance) -- 
+5) Implement Log-Det Function -- Rishabh
+6) Change the combineSubmodularFunctions to combineSetFunctions -- Rishabh
+7) There may be a bug in facilityLocationSparse.eval(), when the set to be
+evaluated is large, the glibc memory issue pop up. We need to work it out in
+the future. 
+8) The bug is with the facility location sparse: (1) eval method does not
+work. Basically, the function has a problem of deleting the vectors. Whenever
+it tries to delete stuff, there reports a glibc error. Similarly, in the test
+code, whenever we try to destruct the function, it will report this error. The
+error only occurs when k >= 5% of n, which is very weird!
+9) Finish copy constructor, destructor, clone, assignment operator for each subclasses of functions. So far, we finished setFunctions, submodularFunctions, featureBasedFunctions. Need to finish for others. 
+

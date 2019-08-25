@@ -1,0 +1,28 @@
+TODO Algorithm items:
+
+0) Implement Approx Greedy
+1) Implement Lazy Partition Matroid Constrained Greedy: Specify the partition matroid as a vector<partition>
+2) Implement Lazy Submodular Welfare
+3) Implement Querayne's algorithm and Greedy Partitioning
+4) Implement SCSK Greedy
+5) Implement Max-Min and Min-Max Data partitioning greedy
+6) Implement Saturate-Greedy for Data Partitioning 
+7) Implement Saturate-Greedy for Robust Submodular Max
+8) Implement Streaming Greedy (KDD or Swapping)
+9) Implement Minibatch and Streaming Secretary Greedy (just finished, need to
+extend to more general setting: allow overlap between minibatches)
+10) Implement Distributed Greedy (this really needs a parallel programming environment)
+ 
+
+
+PS:
+(1) need to double check if implementing the outofcore version of each
+algorithm is really needed. So far, I don't see the need to implement a separate version. 
+(2) KDD with minibatches does not work yet. 
+(3) distributed greedy not tested yet. 
+(4) when added parallel computing, sometimes, unexpected results are got. We
+need to double check whether (a) parallel computing indeed speeds up the
+computation, (b) does not break things, 
+
+
+

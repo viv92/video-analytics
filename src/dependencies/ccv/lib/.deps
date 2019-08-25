@@ -1,0 +1,1 @@
+-lm -lcblas -latlas -lpng -ljpeg -lavcodec -lavformat -lswscale

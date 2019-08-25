@@ -1,0 +1,157 @@
+CC = g++ -std=c++0x
+CFLAGS = -c -v -Wall
+
+OPENCVINCLUDES = -I/usr/local/Cellar/opencv/3.3.1_1/include/opencv
+OPENCVINCLUDES += -I/usr/local/Cellar/opencv/3.3.1_1/include
+OPENCVINCLUDES += -DUSE_OPENCV
+OPENCVLIBPATH = -L/usr/local/Cellar/opencv/3.3.1_1/lib
+OPENCVLIBS = -lopencv_stitching -lopencv_superres -lopencv_videostab -lopencv_photo -lopencv_aruco -lopencv_bgsegm -lopencv_bioinspired -lopencv_ccalib -lopencv_dpm -lopencv_face -lopencv_fuzzy -lopencv_img_hash -lopencv_line_descriptor -lopencv_optflow -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_stereo -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_surface_matching -lopencv_tracking -lopencv_datasets -lopencv_text -lopencv_dnn -lopencv_plot -lopencv_xfeatures2d -lopencv_shape -lopencv_video -lopencv_ml -lopencv_ximgproc -lopencv_calib3d -lopencv_features2d -lopencv_highgui -lopencv_videoio -lopencv_flann -lopencv_xobjdetect -lopencv_imgcodecs -lopencv_objdetect -lopencv_xphoto -lopencv_imgproc -lopencv_core
+EXTRAOPENCV = -Wl,-rpath,/usr/local/Cellar/opencv/3.3.1_1/lib
+
+VLCINCLUDES = -I/Applications/VLC.app/Contents/MacOS/include
+VLCINCLUDES += -I/Applications/VLC.app/Contents/MacOS/include/vlc
+VLCLIBPATH = -L/Applications/VLC.app/Contents/MacOS/lib
+VLCLIBS = -lvlc
+EXTRAVLC = -Wl,-rpath,/Applications/VLC.app/Contents/MacOS/lib
+
+X11INCLUDES = -I/opt/X11/include
+X11LIBPATH = -L/opt/X11/lib
+X11LIBS = -lX11
+EXTRAX11 = -Wl,-rpath,/opt/X11/lib
+
+CAFFEINCLUDES = -I/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/caffe/include -I/usr/local/opt/openblas/include
+CAFFELIBPATH = -L/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/caffe/build/lib -L/usr/local/opt/openblas/lib
+CAFFELIBS = -lcaffe -DCPU_ONLY
+EXTRACAFFE = -Wl,-rpath,/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/caffe/build/lib
+
+CAFFESSDINCLUDES = -I/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/caffessd/include -I/usr/local/opt/openblas/include
+CAFFESSDLIBPATH = -L/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/caffessd/build/lib -L/usr/local/opt/openblas/lib
+CAFFESSDLIBS = -lcaffe -DCPU_ONLY
+EXTRACAFFESSD = -Wl,-rpath,/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/caffessd/build/lib
+
+# DARKNETINCLUDES = -I/home/aitoe/Desktop/aisaac/src/dependencies/darknet/include
+# DARKNETLIBPATH = -L/home/aitoe/Desktop/aisaac/src/dependencies/darknet/build/src/
+# DARKNETLIBS = -ldarknet_core -ldarknet_core_cuda -lcuda -lcudart -lcublas -lcurand -lcudnn -DGPUDARKNET -DOPENCV
+
+DARKNETINCLUDES = -I/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/darknet-cpu/include
+DARKNETLIBPATH = -L/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/darknet-cpu/obj
+DARKNETLIBS = -ldarknet
+
+PROTOBUFINCLUDES= -I/usr/local/Cellar/protobuf/3.5.1/include
+PROTOBUFLIBPATH = -L/usr/local/Cellar/protobuf/3.5.1/lib
+PROTOBUFLIBS = -lprotobuf
+EXTRAPROTOBUF = -Wl,-rpath,/usr/local/Cellar/protobuf/3.5.1/lib
+
+CCVINCLUDES = -I/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/ccv/lib
+CCVLIBPATH = -L/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/ccv/lib
+CCVLIBS = -lccv -lm -lblas -lpng -ljpeg -lfftw3 -lfftw3f -lavcodec -lavformat -lswscale -lpthread
+EXTRACCV = -Wl,-rpath,/Users/pratik/AITOE/aisaac/src/dependencies/ccv/lib
+
+GLOGINCLUDES = -I/usr/local/Cellar/glog/0.3.5_3/include
+GLOGLIBPATH = -L/usr/local/Cellar/glog/0.3.5_3/lib
+GLOGLIBS = -lglog
+EXTRAGLOG = -Wl,-rpath,/usr/local/Cellar/glog/0.3.5_3/lib
+
+BOOSTINCLUDES = -I/usr/local/Cellar/boost/1.65.1/include
+BOOSTLIBPATH = -L/usr/local/Cellar/boost/1.65.1/lib
+BOOSTLIBS = -lboost_system -lboost_thread-mt
+EXTRABOOST = -Wl,-rpath,/usr/local/Cellar/boost/1.65.1/lib
+
+DATKINCLUDES = -I/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/datk/src
+DATKLIBPATH = -L/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/src/dependencies/datk/build
+DATKLIBS = -ldatk
+EXTRADATK = -Wl,-rpath,/Users/apple/Desktop/rkiyer/AITOELabs/aisaac_lite/dependencies/datk/build
+
+POCOINCLUDES = -I/usr/local/Cellar/poco/1.8.1/include
+POCOLIBPATH = -L/usr/local/Cellar/poco/1.8.1/lib
+POCOLIBS = -lPocoNet -lPocoUtil -lPocoFoundation
+EXTRAPOCO = -Wl,-rpath,/usr/local/Cellar/poco/1.8.1/lib
+
+AISAAC_ROOT = src/*.cpp
+
+CUSTOM_AISAAC_SOURCES = src/CustomAnalytics/*.cpp #src/utils/*.cpp
+
+BG_AISAAC_SOURCES = src/BgSubAnalytics/*.cpp src/utils/BackgroundSubtraction/MLBGS/*.cpp # src/utils/BackgroundSubtraction/PBAS/*.cpp src/utils/BackgroundSubtraction/VIBE/*.cpp
+
+OBJECT_AISAAC_SOURCES = src/ObjectAnalytics/*.cpp
+
+FACE_AISAAC_SOURCES = src/FaceAnalytics/faceAnalytics.cpp src/utils/NPDFaceDetection/*.cpp
+
+HEAD_AISAAC_SOURCES = src/HeadAnalytics/*.cpp
+
+HUMAN_AISAAC_SOURCES = src/HumanAnalytics/*.cpp
+
+SUMMARIZATION_AISAAC_SOURCES = src/Summarization/videoSummarization.cpp src/utils/Summarization/*.cpp
+
+SERIAL_SOURCES = tools/mongoLink/serialLink.cpp
+
+VIDEO_GRABBER_SOURCES = tools/videoGrabber/videoGrabber.cpp
+
+POCO_SOURCES = tools/streamingServer/*.cpp
+
+VIDEO_SOURCES = tools/videoSources/aiVideoStreamer.cpp tools/videoSources/ffmpegStreamer.cpp tools/videoSources/fileStreamer.cpp tools/videoSources/libvlcStreamer.cpp tools/videoSources/webcamStreamer.cpp
+
+VIDEO_SOURCES_STREAMING = tools/videoSources/libvlcStreamerGridStreaming.cpp tools/videoSources/aiVideoStreamer.cpp
+
+LOG_ALERT_SOURCES = tools/logAlert/logAlert.cpp
+
+REAL_TIME_ALERT_SOURCES = tools/realTimeAlerts/*.cpp
+
+LOGGING_SOURCES = tools/logging.cpp
+
+# selfServicePortal CPU
+SOURCES_APPL_SSP_CPU = application/SmartEncoder/selfServicePortal.cpp src/utils/dnnClassifier.cpp src/utils/caffeClassifier.cpp src/utils/caffeTrainer.cpp src/utils/dlib/all/*.cpp src/utils/colorClassifier.cpp src/utils/Hungarian.cpp src/utils/KalmanTracker.cpp $(AISAAC_ROOT) $(BG_AISAAC_SOURCES) $(OBJECT_AISAAC_SOURCES) $(FACE_AISAAC_SOURCES) $(SERIAL_SOURCES) $(VIDEO_SOURCES) $(LOG_ALERT_SOURCES)
+OBJECTS_APPL_SSP_CPU = $(SOURCES_APPL_SSP_CPU:.cpp = .o)
+EXECUTABLE_APPL_SSP_CPU = selfServicePortalCPU
+$(EXECUTABLE_APPL_SSP_CPU):
+	$(CC) $(OPENCVINCLUDES) $(BOOSTINCLUDES) $(X11INCLUDES) $(GLOGINCLUDES) $(PROTOBUFINCLUDES) $(CAFFEINCLUDES) $(CCVINCLUDES) $(DATKINCLUDES) $(VLCINCLUDES) $(OPENCVLIBPATH) $(BOOSTLIBPATH) $(X11LIBPATH) $(GLOGLIBPATH) $(PROTOBUFLIBPATH) $(CAFFELIBPATH) $(DATKLIBPATH) $(VLCLIBPATH) $(OBJECTS_APPL_SSP_CPU) $(OPENCVLIBS) $(BOOSTLIBS) $(X11LIBS) $(GLOGLIBS) $(PROTOBUFLIBS) $(CAFFELIBS) $(DATKLIBS) $(VLCLIBS) $(OTHERLIBS) -DDNN_CLASSIFIER -o build/$@
+
+SOURCES_APPL_SSP_GPU = application/SmartEncoder/selfServicePortal.cpp src/utils/darknetClassifier.cpp  src/utils/caffeClassifier.cpp src/utils/caffeTrainer.cpp src/utils/dlib/all/*.cpp src/utils/colorClassifier.cpp src/utils/Hungarian.cpp src/utils/KalmanTracker.cpp $(AISAAC_ROOT) $(BG_AISAAC_SOURCES) $(OBJECT_AISAAC_SOURCES) $(FACE_AISAAC_SOURCES) $(SERIAL_SOURCES) $(VIDEO_SOURCES) $(LOG_ALERT_SOURCES)
+OBJECTS_APPL_SSP_GPU = $(SOURCES_APPL_SSP_GPU:.cpp = .o)
+EXECUTABLE_APPL_SSP_GPU = selfServicePortalGPU
+$(EXECUTABLE_APPL_SSP_GPU):
+	$(CC) $(OPENCVINCLUDES) $(BOOSTINCLUDES) $(X11INCLUDES) $(GLOGINCLUDES) $(PROTOBUFINCLUDES) $(CAFFESSDINCLUDES) $(DARKNETINCLUDES) $(CCVINCLUDES) $(DATKINCLUDES) $(VLCINCLUDES) $(OPENCVLIBPATH) $(BOOSTLIBPATH) $(X11LIBPATH) $(GLOGLIBPATH) $(PROTOBUFLIBPATH) $(CAFFESSDLIBPATH) $(DARKNETLIBPATH) $(DATKLIBPATH) $(VLCLIBPATH) $(OBJECTS_APPL_SSP_GPU) $(OPENCVLIBS) $(BOOSTLIBS) $(X11LIBS) $(GLOGLIBS) $(PROTOBUFLIBS) $(CAFFESSDLIBS) $(DARKNETLIBS) $(DATKLIBS) $(VLCLIBS) $(OTHERLIBS) -DDARKNET -o build/$@
+
+# clientStreamingServer
+SOURCES_APPL_CLIENT_STREAMING_SERVER = application/SmartEncoder/clientStreamingServer.cpp
+OBJECTS_APPL_CLIENT_STREAMING_SERVER = $(SOURCES_APPL_CLIENT_STREAMING_SERVER:.cpp = .o)
+EXECUTABLE_APPL_CLIENT_STREAMING_SERVER = clientStreamingServer
+$(EXECUTABLE_APPL_CLIENT_STREAMING_SERVER):
+	$(CC) $(BOOSTINCLUDES) $(BOOSTLIBPATH) $(OBJECTS_APPL_CLIENT_STREAMING_SERVER) $(BOOSTLIBS) $(OTHERLIBS) -o build/$@
+
+# summarizationJsonifyExec
+SOURCES_EXAMPLE_SUMMARIZATION_JSONIFY = examples/Summarization/summarizationJsonifyExec.cpp src/utils/dlib/all/*.cpp $(AISAAC_ROOT) $(SUMMARIZATION_AISAAC_SOURCES) $(SERIAL_SOURCES) $(VIDEO_SOURCES) $(LOGGING_SOURCES)
+OBJECTS_EXAMPLE_SUMMARIZATION_JSONIFY = $(SOURCES_EXAMPLE_SUMMARIZATION_JSONIFY: .cpp = .o)
+EXECUTABLE_EXAMPLE_SUMMARIZATION_JSONIFY = summarizationJsonifyExec
+$(EXECUTABLE_EXAMPLE_SUMMARIZATION_JSONIFY):
+	$(CC) $(OPENCVINCLUDES) $(VLCINCLUDES) $(X11INCLUDES) $(GLOGINCLUDES) $(BOOSTINCLUDES) $(DATKINCLUDES) $(OPENCVLIBPATH) $(VLCLIBPATH) $(X11LIBPATH) $(GLOGLIBPATH) $(BOOSTLIBPATH) $(CCVINCLUDES) $(DATKLIBPATH) $(OBJECTS_EXAMPLE_SUMMARIZATION_JSONIFY) $(OPENCVLIBS) $(VLCLIBS) $(X11LIBS) $(GLOGLIBS) $(BOOSTLIBS) $(DATKLIBS) $(OTHERLIBS) -o build/$@
+
+# gridStreamer
+SOURCES_APPL_GRID_STREAMER = application/SmartEncoder/gridStreamer.cpp tools/daemon.cpp $(LOGGING_SOURCES) $(VIDEO_SOURCES_STREAMING) $(POCO_SOURCES)
+OBJECTS_APPL_GRID_STREAMER = $(SOURCES_APPL_GRID_STREAMER: .cpp = .o)
+EXECUTABLE_APPL_GRID_STREAMER = gridStreamer
+$(EXECUTABLE_APPL_GRID_STREAMER):
+	$(CC) $(OPENCVINCLUDES) $(X11INCLUDES) $(GLOGINCLUDES) $(VLCINCLUDES) $(CCVINCLUDES) $(BOOSTINCLUDES) $(POCOINCLUDES) $(OPENCVLIBPATH) $(X11LIBPATH) $(GLOGLIBPATH) $(VLCLIBPATH) $(BOOSTLIBPATH) $(POCOLIBPATH) $(OBJECTS_APPL_GRID_STREAMER) $(OPENCVLIBS) $(X11LIBS) $(GLOGLIBS) $(VLCLIBS) $(BOOSTLIBS) $(POCOLIBS) $(OTHERLIBS) -o build/$@
+
+# connectFrameExec
+SOURCES_APPL_CONNECT_FRAME_EXEC = application/SmartEncoder/connectFrameExec.cpp $(VIDEO_SOURCES) $(LOGGING_SOURCES) $(LOG_ALERT_SOURCES)
+OBJECTS_APPL_CONNECT_FRAME_EXEC = $(SOURCES_APPL_CONNECT_FRAME_EXEC: .cpp = .o)
+EXECUTABLE_APPL_CONNECT_FRAME_EXEC = connectFrameExec
+$(EXECUTABLE_APPL_CONNECT_FRAME_EXEC):
+	$(CC) $(OPENCVINCLUDES) $(GLOGINCLUDES) $(VLCINCLUDES) $(OPENCVLIBPATH) $(CCVINCLUDES) $(GLOGLIBPATH) $(VLCLIBPATH) $(OBJECTS_APPL_CONNECT_FRAME_EXEC) $(OPENCVLIBS) $(GLOGLIBS) $(VLCLIBS) $(OTHERLIBS) -o build/$@
+
+# daemonControllerEncoder
+SOURCES_APPL_DAEMON_CONTROLLER_ENCODER = application/SmartEncoder/daemonControllerEncoder.cpp src/utils/dlib/all/*.cpp src/utils/colorClassifier.cpp src/utils/Hungarian.cpp src/utils/KalmanTracker.cpp $(AISAAC_ROOT) $(VIDEO_GRABBER_SOURCES) $(BG_AISAAC_SOURCES) $(OBJECT_AISAAC_SOURCES) $(FACE_AISAAC_SOURCES) $(LOG_ALERT_SOURCES) $(VIDEO_SOURCES) $(POCO_SOURCES) $(SERIAL_SOURCES) $(LOGGING_SOURCES) $(REAL_TIME_ALERT_SOURCES)
+OBJECTS_APPL_DAEMON_CONTROLLER_ENCODER = $(SOURCES_APPL_DAEMON_CONTROLLER_ENCODER: .cpp = .o)
+EXECUTABLE_APPL_DAEMON_CONTROLLER_ENCODER = daemonControllerEncoder
+$(EXECUTABLE_APPL_DAEMON_CONTROLLER_ENCODER):
+	$(CC) $(OPENCVINCLUDES) $(CCVINCLUDES) $(X11INCLUDES) $(CCVINCLUDES) $(GLOGINCLUDES) $(BOOSTINCLUDES) $(DATKINCLUDES) $(VLCINCLUDES) $(POCOINCLUDES) $(OPENCVLIBPATH) $(X11LIBPATH) $(CCVLIBPATH) $(GLOGLIBPATH) $(BOOSTLIBPATH) $(DATKLIBPATH) $(VLCLIBPATH) $(POCOLIBPATH) $(OBJECTS_APPL_DAEMON_CONTROLLER_ENCODER) $(OPENCVLIBS)  $(X11LIBS) $(CCVLIBS) $(GLOGLIBS) $(BOOSTLIBS) $(DATKLIBS) $(VLCLIBS) $(POCOLIBS) $(OTHERLIBS) -o build/$@
+
+# featureExtactor
+SOURCES_APPL_FEATURE_EXTRACTOR = application/SmartEncoder/featureExtractor.cpp src/utils/caffeClassifier.cpp src/utils/caffeTrainer.cpp src/utils/dlib/all/*.cpp $(AISAAC_ROOT) $(SERIAL_SOURCES)
+OBJECTS_APPL_FEATURE_EXTRACTOR = $(SOURCES_APPL_FEATURE_EXTRACTOR:.cpp = .o)
+EXECUTABLE_APPL_FEATURE_EXTRACTOR = featureExtractor
+$(EXECUTABLE_APPL_FEATURE_EXTRACTOR):
+	$(CC) $(OPENCVINCLUDES) $(CCVINCLUDES) $(BOOSTINCLUDES) $(X11INCLUDES) $(GLOGINCLUDES) $(PROTOBUFINCLUDES) $(CAFFEINCLUDES) $(DATKINCLUDES) $(OPENCVLIBPATH) $(BOOSTLIBPATH) $(X11LIBPATH) $(GLOGLIBPATH) $(PROTOBUFLIBPATH) $(CAFFELIBPATH) $(DATKLIBPATH) $(OBJECTS_APPL_FEATURE_EXTRACTOR) $(OPENCVLIBS) $(BOOSTLIBS) $(X11LIBS) $(GLOGLIBS) $(PROTOBUFLIBS) $(CAFFELIBS) $(DATKLIBS) $(OTHERLIBS) -o build/$@
+
+smartEncoder: connectFrameExec clientStreamingServer daemonControllerEncoder gridStreamer selfServicePortal summarizationJsonifyExec featureExtactor
